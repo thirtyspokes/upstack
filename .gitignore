@@ -1,0 +1,14 @@
+# Build outputs. Binaries have no extension, so instead of listing them,
+# ignore everything inside lesson directories and whitelist the sources.
+[0-9][0-9]-*/*
+!*/*.s
+!*/*.md
+!*/*.c
+!*/*.h
+!*/Makefile
+
+# Debug symbol bundles (clang -g) and object files, wherever they appear
+*.dSYM/
+*.o
+.DS_Store
+*.swp
