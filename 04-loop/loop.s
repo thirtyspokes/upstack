@@ -1,21 +1,5 @@
 // Lesson 4: loops.
 //
-// A loop is a conditional branch that points BACKWARDS. That is the whole idea.
-// This program has two loops.
-//
-//   Loop 1: sum = 1 + 2 + ... + n        (n = 10, so sum = 55)
-//           This is the classic   for (i = 1; i <= n; i++) sum += i;
-//
-//   Loop 2: print n stars, one write syscall per star, then a newline.
-//           Shows a loop whose body makes a syscall. The syscall needs x0, x1,
-//           x2, x16 for itself and overwrites x0 and x1 with results, so the
-//           loop counter must live somewhere else.
-//
-// New instructions:
-//   cbnz x, label   "compare and branch if not zero": jump if x != 0.
-//                   A cmp + b.ne fused into one instruction, flags untouched.
-//   subs            sub that also sets the flags (cmp is subs with no result)
-//
 // Build:  make
 // Run:    ./loop ; echo $?        (expect 10 stars and exit code 55)
 // Debug:  lldb ./loop  ->  b main, r, then si repeatedly and watch x1 x2 x3
@@ -25,7 +9,7 @@
 .align 2
 
 _main:
-    mov  x1, #10              // n
+    mov  x1, #10              // n 
     mov  x2, #0               // sum = 0
     mov  x3, #1               // i = 1
 
